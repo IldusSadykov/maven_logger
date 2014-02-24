@@ -1,0 +1,7 @@
+# put here translations for logger description
+
+en:
+  maven_logger:
+    #  some_class:
+    #    some_action: 'some info'
+
