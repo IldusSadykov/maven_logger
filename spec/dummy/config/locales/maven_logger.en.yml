@@ -1,0 +1,9 @@
+# put here translations for logger description
+
+en:
+  maven_logger:
+    logger_tester:
+      foo: 'Foo called'
+      bar: 'Bar called'
+      baz: 'Baz called'
+

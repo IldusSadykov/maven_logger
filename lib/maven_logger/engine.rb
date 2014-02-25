@@ -8,6 +8,7 @@ module MavenLogger
       g.fixture_replacement :factory_girl, :dir => 'spec/factories'
       g.assets false
       g.helper false
+      g.orm :mongoid
     end
 
     initializer 'maven_logger.logger_configure' do
