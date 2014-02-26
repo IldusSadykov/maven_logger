@@ -1,3 +1,49 @@
 = MavenLogger
 
-This project rocks and uses MIT-LICENSE.
+Easily logger for mongoid
+
+== Usage
+
+MavenLogger requires you to have a LoggerEntry and LoggerSchema models.
+The simplest way is to use the generator for install maven_logger:
+
+  rails generate maven_logger:install
+
+Next step is to determine in config maven_logger.rb file what generates an event in your various classes.
+
+  MavenLogger.setup do |config|
+    config.class_actions = [
+      [PostsController, %i[new create]],
+      [Post, %i[import]],
+      ...
+    ]
+  end
+
+and add description text to maven_logger.en.yml that should be written in description in LoggerEntry
+Name of locale method should contain name of class with underscore. For example:
+
+  maven_logger:
+    posts_controller:
+      new: 'new post event called'
+      create: 'post created'
+    post:
+      import: 'the new post imported'
+
+You can add schema statements to classes to log some info about it.
+For example to save count of results:
+
+  class LoggerSchema < MavenLogger::Schema
+    add_schema_for Post, :import, :data_fetched
+
+    private
+
+    def self.data_fetched(result)
+      { count: result.count }
+    end
+  end
+
+== Credits
+
+Thank you, Arkadiy Butermanov for sharing your modules and other scripts from which I derived inspiration for items in this project.
+
+Copyright (c) 2014 Ildus Sadykov. It is free software and may be redistributed under the terms specified in the MIT-LICENSE file.
