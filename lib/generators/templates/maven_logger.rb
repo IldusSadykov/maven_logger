@@ -6,4 +6,5 @@ MavenLogger.setup do |config|
   #  [
   #    [SomeClass, %i[some_method some_method]]
   #  ]
+  #  config.empty_log = true
 end

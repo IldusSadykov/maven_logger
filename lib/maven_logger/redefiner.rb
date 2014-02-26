@@ -53,7 +53,11 @@ module MavenLogger
         result:      result
       }
 
-      LoggerEntry.create(log_info)
+      if MavenLogger.empty_log
+        LoggerEntry.create(log_info)
+      else result && result.count > 0
+        LoggerEntry.create(log_info)
+      end
     end
   end
 end

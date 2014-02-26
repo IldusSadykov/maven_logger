@@ -1,6 +1,6 @@
 = MavenLogger
 
-Easily logger for mongoid
+Easy logger for mongoid
 
 == Usage
 
@@ -9,7 +9,8 @@ The simplest way is to use the generator for install maven_logger:
 
   rails generate maven_logger:install
 
-Next step is to determine in config maven_logger.rb file what generates an event in your various classes.
+Next step is to determine maven_logger.rb config file which generates an event in your various classes.
+Set empty_log = false if you don't want to fill in empty log info
 
   MavenLogger.setup do |config|
     config.class_actions = [
@@ -17,9 +18,10 @@ Next step is to determine in config maven_logger.rb file what generates an event
       [Post, %i[import]],
       ...
     ]
+    config.empty = false
   end
 
-and add description text to maven_logger.en.yml that should be written in description in LoggerEntry
+and add description text to maven_logger.en.yml that should be written in description of LoggerEntry
 Name of locale method should contain name of class with underscore. For example:
 
   maven_logger:
@@ -30,7 +32,7 @@ Name of locale method should contain name of class with underscore. For example:
       import: 'the new post imported'
 
 You can add schema statements to classes to log some info about it.
-For example to save count of results:
+For example to save the count of results:
 
   class LoggerSchema < MavenLogger::Schema
     add_schema_for Post, :import, :data_fetched

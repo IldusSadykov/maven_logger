@@ -5,9 +5,11 @@ require 'maven_logger/redefiner'
 require 'maven_logger/schema'
 
 module MavenLogger
-  mattr_accessor :class_actions
+  mattr_accessor :class_actions, :empty_log
 
   def self.setup
     yield self
   end
+
+  @@empty_log = false
 end
