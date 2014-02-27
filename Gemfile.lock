@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    maven_logger (0.0.3)
+    maven_logger (0.0.4)
       mongoid
       rails (~> 4.0.0)
 
