@@ -58,6 +58,8 @@ module MavenLogger
       else result && result.count > 0
         LoggerEntry.create(log_info)
       end
+      rescue NoMethodError
+      LoggerEntry.create(log_info)
     end
   end
 end
